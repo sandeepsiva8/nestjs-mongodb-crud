@@ -39,15 +39,15 @@ export class StudentController {
     }
   }
 
-  @Put('/:id')
+  @Put('/:studentId')
   async updateStudent(
     @Res() response,
-    @Param('id') id: string,
+    @Param('studentId') studentId: string,
     @Body() updateStudentDto: UpdateStudentDto,
   ) {
     try {
       const existingStudent = await this.studentService.updateStudent(
-        id,
+        studentId,
         updateStudentDto,
       );
       return response.status(HttpStatus.OK).json({
@@ -72,10 +72,10 @@ export class StudentController {
     }
   }
 
-  @Get('/:id')
-  async getStudent(@Res() response, @Param('id') id: string) {
+  @Get('/:studentId')
+  async getStudent(@Res() response, @Param('studentId') studentId: string) {
     try {
-      const existingStudent = await this.studentService.getStudent(id);
+      const existingStudent = await this.studentService.getStudent(studentId);
       return response.status(HttpStatus.OK).json({
         message: 'Student found successfully',
         existingStudent,
@@ -85,10 +85,10 @@ export class StudentController {
     }
   }
 
-  @Delete('/:id')
-  async deleteStudent(@Res() response, @Param('id') id: string) {
+  @Delete('/:studentId')
+  async deleteStudent(@Res() response, @Param('studentId') studentId: string) {
     try {
-      const deletedStudent = await this.studentService.deleteStudent(id);
+      const deletedStudent = await this.studentService.deleteStudent(studentId);
       return response.status(HttpStatus.OK).json({
         message: 'Student deleted successfully',
         deletedStudent,

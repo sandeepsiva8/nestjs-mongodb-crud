@@ -15,16 +15,16 @@ export class StudentService {
   }
 
   async updateStudent(
-    id: string,
+    studentId: string,
     updateStudentDto: UpdateStudentDto,
   ): Promise<Student> {
     const existingStudent = await this.studentModel.findByIdAndUpdate(
-      id,
+      studentId,
       updateStudentDto,
       { new: true },
     );
     if (!existingStudent) {
-      throw new NotFoundException(`Student #${id} not found`);
+      throw new NotFoundException(`Student #${studentId} not found`);
     }
     return existingStudent;
   }
@@ -37,18 +37,18 @@ export class StudentService {
     return studentData;
   }
 
-  async getStudent(id: string): Promise<Student> {
-    const existingStudent = await this.studentModel.findById(id).exec();
+  async getStudent(studentId: string): Promise<Student> {
+    const existingStudent = await this.studentModel.findById(studentId).exec();
     if (!existingStudent) {
-      throw new NotFoundException(`Student #${id} not found`);
+      throw new NotFoundException(`Student #${studentId} not found`);
     }
     return existingStudent;
   }
 
-  async deleteStudent(id: string): Promise<Student> {
-    const deletedStudent = await this.studentModel.findByIdAndDelete(id);
+  async deleteStudent(studentId: string): Promise<Student> {
+    const deletedStudent = await this.studentModel.findByIdAndDelete(studentId);
     if (!deletedStudent) {
-      throw new NotFoundException(`Student #${id} not found`);
+      throw new NotFoundException(`Student #${studentId} not found`);
     }
     return deletedStudent;
   }
