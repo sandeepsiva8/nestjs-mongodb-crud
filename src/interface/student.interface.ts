@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface IStudent extends Document {
+export interface Student extends Document {
   readonly name: string;
 
   readonly roleNumber: number;

@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { StudentController } from './controller/student/student.controller';
 import { StudentSchema } from './schema/student.schema';
 import { StudentService } from './service/student/student.service';
@@ -13,7 +11,7 @@ import { StudentService } from './service/student/student.service';
     }),
     MongooseModule.forFeature([{ name: 'Student', schema: StudentSchema }]),
   ],
-  controllers: [AppController, StudentController],
-  providers: [AppService, StudentService],
+  controllers: [StudentController],
+  providers: [StudentService],
 })
 export class AppModule {}
